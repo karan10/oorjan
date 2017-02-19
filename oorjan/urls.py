@@ -25,5 +25,8 @@ urlpatterns = [
     url(r'^api/', include('oorjan_app.urls')),
 ]
 
-if not settings.DEBUG:
-   urlpatterns += staticfiles_urlpatterns()
+from django.conf.urls.static import static
+
+urlpatterns = [
+    # ... the rest of your URLconf goes here ...
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
