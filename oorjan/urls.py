@@ -23,3 +23,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('oorjan_app.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+admin.site.site_header = 'Oorjan Admin'
