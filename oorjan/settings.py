@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'oorjan.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'oorjan', 
-        'USER': 'postgres',
-        'PASSWORD': 'kira',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'db1o8gka87r0bu', 
+        'USER': 'bdqzypvusmtkwz',
+        'PASSWORD': '5076294ce073ce1b175378d499efa60bf726d87a0aa8900666fa59c191d89f85',
+        'HOST': 'ec2-23-21-204-166.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -117,7 +117,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
