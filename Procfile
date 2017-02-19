@@ -1,1 +1,1 @@
-web: gunicorn oorjan.wsgi --log-file -
+web: gunicorn --chdir oorjan --log-file - oorjan.wsgi:application
