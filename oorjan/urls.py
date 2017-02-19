@@ -24,3 +24,5 @@ urlpatterns = [
     url(r'^api/', include('oorjan_app.urls')),
 ]
 
+if not settings.DEBUG:
+   urlpatterns += staticfiles_urlpatterns()
