@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'oorjan.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db1o8gka87r0bu', 
-        'USER': 'bdqzypvusmtkwz',
-        'PASSWORD': '5076294ce073ce1b175378d499efa60bf726d87a0aa8900666fa59c191d89f85',
-        'HOST': 'ec2-23-21-204-166.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'NAME': '', 
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
