@@ -47,14 +47,14 @@ class EmailReport:
     def __calculate_report(self):
         
 
-        today_min = datetime.datetime.combine(datetime.date.today()-timedelta(days=1), datetime.time.min)
-        today_max = datetime.datetime.combine(datetime.date.today()-timedelta(days=1), datetime.datetime.strptime('19:00', '%H:%M').time())
+        today_min = datetime.datetime.combine(datetime.date.today()-timedelta(days=0), datetime.time.min)
+        today_max = datetime.datetime.combine(datetime.date.today()-timedelta(days=0), datetime.datetime.strptime('19:00', '%H:%M').time())
 
         # get today's data
         today_data = SolarData.objects.filter(timestamp__range=(today_min, today_max)).order_by('timestamp')
 
-        today_ref_min = datetime.datetime.combine(datetime.date.today()-relativedelta(years=2)-timedelta(days=1), datetime.time.min)
-        today_ref_max = datetime.datetime.combine(datetime.date.today()-relativedelta(years=2)-timedelta(days=1), datetime.datetime.strptime('19:00', '%H:%M').time())
+        today_ref_min = datetime.datetime.combine(datetime.date.today()-relativedelta(years=2)-timedelta(days=0), datetime.time.min)
+        today_ref_max = datetime.datetime.combine(datetime.date.today()-relativedelta(years=2)-timedelta(days=0), datetime.datetime.strptime('19:00', '%H:%M').time())
 
         # get reference data
         today_ref_data = SolarReferenceData.objects.filter(timestamp__range=(today_ref_min, today_ref_max)).order_by('timestamp')

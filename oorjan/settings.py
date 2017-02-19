@@ -142,5 +142,10 @@ STATICFILES_DIRS = [
 EMAIL_USERNAME = ''
 EMAIL_PASSWORD = ''
 
-CELERY_BROKER_URL = os.environ['REDIS_URL']
-CELERY_BACKEND = os.environ['REDIS_URL']
+
+CELERY_BROKER_URL = ''
+CELERY_BACKEND = ''
+
+# uncomment this while working in heroku
+# CELERY_BROKER_URL = os.environ['REDIS_URL']
+# CELERY_BACKEND = os.environ['REDIS_URL']
