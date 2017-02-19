@@ -1,3 +1,1 @@
-django
-psycopg2
-djangorestframework
+reference data is of 2015

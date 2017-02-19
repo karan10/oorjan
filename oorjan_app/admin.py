@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SolarData, SolarMetaData, SolarReferenceData
+from .models import SolarData, SolarMetaData, SolarReferenceData, ReportAnalyzer
 # Register your models here.
 
 
@@ -14,4 +14,5 @@ class SolarMetaDataAdmin(admin.ModelAdmin):
 admin.site.register(SolarData, SolarDataAdmin)
 admin.site.register(SolarMetaData, SolarMetaDataAdmin)
 admin.site.register(SolarReferenceData)
+admin.site.register(ReportAnalyzer)
 

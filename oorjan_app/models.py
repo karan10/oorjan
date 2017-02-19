@@ -5,7 +5,7 @@ import uuid
 
 # Create your models here.
 
-
+# will add created datetime to every model
 class BaseModel(models.Model):
 
     created_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
@@ -13,7 +13,7 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-
+# have attributes of data coming as post request
 class SolarData(BaseModel):
 
     user_id = models.ForeignKey('SolarMetaData', models.DO_NOTHING, blank=True, null=True)
@@ -28,7 +28,7 @@ class SolarData(BaseModel):
         return str(self.user_id)
 
 
-
+# solar meta data about solar installation
 class SolarMetaData(BaseModel):
 
     TIMEFRAME = ( ('HOURLY', 'HOURLY'), ('DAILY', 'DAILY'), ('WEEKLY', 'WEEKLY'), ('MONTHLY', 'MONTHLY'), ('YEARLY', 'YEARLY') )
@@ -53,7 +53,7 @@ class SolarMetaData(BaseModel):
     def __unicode__(self):
         return str(self.id)
 
-
+# store reference data
 class SolarReferenceData(BaseModel):
 
     dc_power = models.DecimalField(max_digits=9, decimal_places=5, blank=True, null=True)
@@ -65,3 +65,17 @@ class SolarReferenceData(BaseModel):
 
     def __unicode__(self):
         return str(self.id)
+
+
+
+class ReportAnalyzer(BaseModel):
+
+    email_to = models.EmailField(max_length=128, blank=True, null=True)
+    name = models.CharField(max_length=50, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "ReportAnalyzer"
+        verbose_name_plural = "ReportAnalyzer"
+
+    def __unicode__(self):
+        return str(self.email_to)
