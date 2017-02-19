@@ -3,3 +3,4 @@ psycopg2
 djangorestframework
 gunicorn
 whitenoise
+celery
