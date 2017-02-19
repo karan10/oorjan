@@ -9,7 +9,7 @@ from rest_framework import status
 from rest_framework.renderers import JSONRenderer
 from .models import SolarMetaData, SolarData, SolarReferenceData
 import json
-import ast
+# import ast
 
 
 
@@ -30,21 +30,13 @@ def solar_data_request(request):
 
     elif request.method == 'POST':
 
-        # return JSONResponse({'error':'Invalid Installation Key'})
-        # args_str = ','.join(cursor.mogrify("(%s, %s)", x) for x in email_data_list)
-        # query = """
-        #     INSERT INTO oorjan_app_solarreferencedata (dc_power,timestamp) VALUES """ + args_str + """; 
-        #     """
 
-        # cursor.execute(query)
-        x = ast.literal_eval(request.body)
-        for i in x:
-            q = SolarReferenceData(dc_power=i[0], timestamp=i[1])
-            q.save()
+        # x = ast.literal_eval(request.body)
+        # for i in x:
+        #     q = SolarReferenceData(dc_power=i[0], timestamp=i[1])
+        #     q.save()
 
-        return JSONResponse({'success':'Done'})
-
-
+        # return JSONResponse({'success':'Done'})
 
         post_data = json.loads(request.body)
 
