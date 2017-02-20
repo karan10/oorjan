@@ -1,6 +1,6 @@
 ## The oorjan Task
 
-1. Api to store the data each hour - 
+1. Api to store the data each hour(POST request required) - 
    * Api = *https://oorjanapp.herokuapp.com/api/solar_data/*
    * Data = {"installation_key":"4bc157dc-bfd2-42c2-ba2e-f2d094386eb8","dc_power":250,"timestamp":"2017-02-18T23:00:00Z"}
 2. Otherwise we can update the whole day's data by running script - *cron_jobs/solar_data_upload.py*
