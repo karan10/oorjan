@@ -143,9 +143,10 @@ EMAIL_USERNAME = ''
 EMAIL_PASSWORD = ''
 
 
-CELERY_BROKER_URL = ''
-CELERY_BACKEND = ''
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BACKEND = 'redis://localhost'
 
 # uncomment this while working in heroku
 # CELERY_BROKER_URL = os.environ['REDIS_URL']
 # CELERY_BACKEND = os.environ['REDIS_URL']
+CELERY_ENABLE_UTC = True

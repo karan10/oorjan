@@ -23,10 +23,10 @@ class JSONResponse(HttpResponse):
 
 @csrf_exempt
 def solar_data_request(request):
-    # if request.method == 'GET':
-    #     solar_data = SolarData.objects.all()
-    #     serializer = SolarDataSerializer(solar_data, many=True)
-    #     return JSONResponse(serializer.data)
+    if request.method == 'GET':
+        # solar_data = SolarData.objects.all()
+        # serializer = SolarDataSerializer(solar_data, many=True)
+        return JSONResponse("error: Make a POST request with expected data")
 
     if request.method == 'POST':
 

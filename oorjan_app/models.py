@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from helpers.common import Common
 import uuid
 
 # Create your models here.
@@ -16,7 +17,7 @@ class BaseModel(models.Model):
 # have attributes of data coming as post request
 class SolarData(BaseModel):
 
-    user_id = models.ForeignKey('SolarMetaData', models.DO_NOTHING, blank=True, null=True)
+    installation_key = models.CharField(max_length=100, blank=True, null=True)
     dc_power = models.DecimalField(max_digits=9, decimal_places=5, blank=True, null=True)
     timestamp = models.DateTimeField(blank=True, null=True)
 
@@ -25,7 +26,7 @@ class SolarData(BaseModel):
         verbose_name_plural = "SolarData"
 
     def __unicode__(self):
-        return str(self.user_id)
+        return str(self.installation_key)
 
 
 # solar meta data about solar installation
@@ -51,7 +52,7 @@ class SolarMetaData(BaseModel):
         verbose_name_plural = "SolarMetaData"
 
     def __unicode__(self):
-        return str(self.id)
+        return str(self.installation_key)
 
 # store reference data
 class SolarReferenceData(BaseModel):
@@ -70,8 +71,18 @@ class SolarReferenceData(BaseModel):
 
 class ReportAnalyzer(BaseModel):
 
+    report_hour = models.IntegerField( choices=[(i, i) for i in range(1, 23)], blank=True, null=True )
+    set_urgent_ts = models.BooleanField(default=False)
+    urgent_ts = models.DateTimeField(blank=True, null=True)
     email_to = models.EmailField(max_length=128, blank=True, null=True)
     name = models.CharField(max_length=50, blank=True, null=True)
+
+    def save(self):
+        super(ReportAnalyzer, self).save()
+        if self.set_urgent_ts is True:
+            from .tasks import send_urgent_email_report
+            send_urgent_email_report.apply_async( eta=Common.local_time_to_utc(self.urgent_ts) )
+
 
     class Meta:
         verbose_name = "ReportAnalyzer"

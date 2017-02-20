@@ -5,7 +5,7 @@ from .models import SolarData, SolarMetaData, SolarReferenceData, ReportAnalyzer
 
 class SolarDataAdmin(admin.ModelAdmin):
     # readonly_fields=('user_id',)
-    list_display=('user_id', 'timestamp',)
+    list_display=('installation_key', 'timestamp',)
 
 class SolarMetaDataAdmin(admin.ModelAdmin):
     readonly_fields=('installation_key',)
